@@ -1,0 +1,279 @@
+/* Gaya Umum */
+body {
+	font-family: "Segoe UI", sans-serif;
+	text-align: center;
+	background: #DDDDDD;
+	color: #373737;
+	margin: 0;
+	padding: 0;
+}
+
+.main-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	justify-content: center;
+	padding: 16px;
+	box-sizing: border-box;
+}
+
+.brand-title {
+	margin-top: 40px;
+	font-size: 2.5rem;
+	font-family: "Mansalva", cursive, Arial, sans-serif;
+	color: #373737;
+	letter-spacing: 1px;
+    text-shadow: 2px 2px 0 #bcaaa4;
+}
+
+.photobooth-frame {
+	background: #373737;
+	border-radius: 24px;
+	box-shadow: 0 8px 32px white;
+	padding: 32px;
+	margin-top: 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 480px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.video-container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+#preview {
+	border: 6px solid #373737;
+	border-radius: 16px;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	background: #222;
+	margin-bottom: 30px;
+	box-shadow: 0 4px 16px white;
+	transform: scaleX(-1);
+	max-width: 100%;
+}
+
+#countdown {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 64px;
+	font-weight: bold;
+	color: #9897A9;
+	text-shadow: 2px 2px 8px #fff3e0, 0 0 16px #bcaaa4;
+	pointer-events: none;
+}
+
+#capture {
+	padding: 12px 32px;
+	background-color: #ADADC9;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 20px;
+	font-family: inherit;
+	cursor: pointer;
+	margin: 18px 0 0 0;
+	box-shadow: 0 2px 8px rgba(109, 76, 65, 0.1);
+	transition: background 0.3s, box-shadow 0.3s;
+	width: 100%;
+	max-width: 300px;
+}
+
+#capture:hover {
+	background-color: #3e424b;
+	box-shadow: 0 4px 16px rgba(109, 76, 65, 0.18);
+}
+
+#downloadLink {
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+}
+
+#output {
+	display: none;
+	margin-top: 24px;
+	border: 4px solid #bcaaa4;
+	border-radius: 16px;
+	box-shadow: 0 4px 16px rgba(109, 76, 65, 0.12);
+	background: #fff3e0;
+	width: 100%;
+	max-width: 100%;
+}
+
+.photo-preview-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 12px;
+	margin-top: 18px;
+}
+
+.photo-preview-thumb {
+	width: 70px;
+	height: 50px;
+	object-fit: cover;
+	border: 2px solid #ADADC9;
+	border-radius: 8px;
+	background: #fff3e0;
+	box-shadow: 0 2px 8px rgba(109, 76, 65, 0.1);
+}
+
+#nextToFrame,
+#backToCapture {
+	padding: 10px 28px;
+	background-color: #ADADC9;
+	color: #3e424b;
+	border: none;
+	border-radius: 8px;
+	font-size: 18px;
+	font-family: inherit;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(109, 76, 65, 0.1);
+	transition: background 0.3s, box-shadow 0.3s;
+	width: 100%;
+	max-width: 300px;
+	margin-top: 12px;
+}
+
+#nextToFrame:hover,
+#backToCapture:hover {
+	background-color: white;
+	box-shadow: 0 4px 16px rgba(109, 76, 65, 0.18);
+}
+
+.background-buttons {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	flex-wrap: nowrap;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.background-buttons button {
+	padding: 8px 22px;
+	background-color: #696880;
+	color: #ADADC9;
+	border: none;
+	border-radius: 8px;
+	font-size: 16px;
+	font-family: inherit;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(109, 76, 65, 0.1);
+	transition: background 0.3s, color 0.3s;
+	flex: 1 1 auto;
+	max-width: 140px;
+}
+
+.background-buttons button.selected,
+.background-buttons button:active {
+	background-color: #ADADC9;
+	color: #fff;
+}
+
+.background-buttons button:hover {
+	background-color: #bcaaa4;
+	color: #fff;
+}
+
+.download-button {
+	display: inline-block;
+	background-color: #d9dddc;
+	color: black;
+	padding: 15px 30px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 18px;
+	cursor: pointer;
+	border-radius: 8px;
+	border: none;
+	transition: background-color 0.3s;
+	width: 100%;
+	max-width: 300px;
+	margin-bottom: 10px;
+}
+
+.download-button:hover {
+	background-color: #999da0;
+}
+
+.download-button:active {
+	background-color: #3e424b;
+}
+
+.button-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	margin-top: 20px;
+	width: 100%;
+}
+
+@media (max-width: 600px) {
+	.photobooth-frame {
+		padding: 16px;
+		max-width: 100%;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	#preview {
+		width: 100%;
+		height: auto;
+		max-height: 70vh;
+		object-fit: contain;
+		aspect-ratio: 4/3;
+	}
+
+	#output {
+		width: 100%;
+		height: auto;
+		max-width: 100%;
+		object-fit: contain;
+	}
+
+	.download-button,
+	#capture,
+	#nextToFrame,
+	#backToCapture {
+		font-size: 16px;
+		padding: 10px;
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.background-buttons {
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	.background-buttons button {
+		flex: 1 1 calc(50% - 8px);
+		max-width: calc(50% - 8px);
+		font-size: 14px;
+		padding: 8px;
+	}
+
+	.photo-preview-list {
+		gap: 8px;
+	}
+
+	.photo-preview-thumb {
+		width: 60px;
+		height: 45px;
+		object-fit: cover;
+	}
+}

@@ -1,0 +1,183 @@
+body {
+  margin: 0;
+  background-color: #3e3a3a;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  background-color: #eeeeec;
+  border-radius: 50%;
+  margin: 0 auto 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  max-width: 80%;
+  height: auto;
+}
+
+.button {
+  background-color: #e5e5e5;
+  color: #000;
+  border: none;
+  padding: 15px 40px;
+  margin: 15px 0;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  width: 200px;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background-color: #e5e5e5;
+}
+
+.login-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.btn-login {
+  background-color: #e5e5e5;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #000;
+  border: none;
+  margin: 15px 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.btn-login:hover {
+  background-color: #e5e5e5;
+}
+
+/* ===== Tampilan khusus halaman login ===== */
+.login-container {
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.login-container h2 {
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+.login-container h3 {
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* ===== Label ===== */
+.login-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+}
+
+/* ===== Input fields ===== */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+  background-color: #f8f8f8;
+  transition: border-color 0.3s;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+  border-color: #999;
+  outline: none;
+}
+
+/* ===== Tombol Login ===== */
+.login-container .button {
+  background-color: #3e3a3a;
+  color: #fff;
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-container .button:hover {
+  background-color: #5a5454;
+}
+
+@media (max-width: 768px) {
+  .button {
+    width: 90%;
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+
+  .logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .login-button {
+    top: 10px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .login-container {
+    padding: 20px 15px;
+    margin: 0 10px;
+  }
+}

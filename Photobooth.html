@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Photo Strip Kafe</title>
+		<link rel="stylesheet" href="Photobooth.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	</head>
+	<body>
+		<div class="main-container">
+			<h1 class="brand-title">📸 Strip Foto Kafe Kopi Kulah</h1>
+
+			<!-- photo capture/preview view -->
+			<div id="captureView" class="photobooth-frame">
+				<div class="video-container">
+					<video id="preview" autoplay playsinline></video>
+					<div id="countdown"></div>
+				</div>
+				<button id="capture">Ambil Foto</button>
+				<div id="photoPreviewList" class="photo-preview-list"></div>
+				<button id="nextToFrame" style="display: none; margin-top: 16px">
+					Lanjut ke Frame
+				</button>
+			</div>
+			<!-- frame selection/result view -->
+			<div
+				id="frameView"
+				class="photobooth-frame"
+				style="display: none; flex-direction: column; align-items: center"
+			>
+				<div class="background-buttons" style="margin-bottom: 12px">
+					<button id="bgTema1">Tema1</button>
+					<button id="bgTema2">Tema2</button>
+					<button id="bgTema3">Tema3</button>
+                    <button id="bgTema4">Tema4</button>
+				</div>
+				<div class="result-container">
+					<canvas id="output"></canvas>
+					<div class="button-container">
+						<a id="downloadLink" href="#" download="photo_strip.png" class="download-button"
+							>💾 Unduh Foto</a
+						>
+						<button id="backToCapture" style="margin-top: 16px">Kembali</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="Photobooth.js"></script>
+	</body>
+</html>
