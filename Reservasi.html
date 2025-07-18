@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reservasi Kafe</title>
+  <link rel="stylesheet" href="Reservasi.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+  <h2>Form Reservasi Kafe</h2>
+  <form id="reservasiForm">
+    <label for="nama">Nama Pelanggan:</label>
+    <input type="text" name="nama" id="nama" required /><br />
+
+    <label for="tanggal">Tanggal Reservasi:</label>
+    <input type="date" name="tanggal" id="tanggal" required /><br />
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required /><br />
+
+    <label for="telepon">Nomor HP (62):</label>
+    <input type="tel" name="telepon" id="telepon" pattern="[0-9]{10,15}" required /><br />
+
+    <label for="jumlah">Jumlah Orang:</label>
+    <input type="number" name="jumlah" id="jumlah" min="1" max="20" required /><br />
+
+    <div class="button-container">
+      <button type="button" id="backToHome" style="margin-top: 16px">Kembali</button>
+    </div>
+
+    <button type="submit" id="submitBtn">Kirim Reservasi</button>
+    <div id="status-pesan"></div>
+  </form>
+
+  <script>
+    const form = document.getElementById("reservasiForm");
+    const tanggalInput = document.getElementById("tanggal");
+    const submitBtn = document.getElementById("submitBtn");
+    const statusPesan = document.getElementById("status-pesan");
+
+    const appsScriptUrl = "https://script.google.com/macros/s/AKfycby0xSVI4dAah3d2XnBMG5Ojbqx0rYHOTJVchx62Dm1D7E-HSCmVcZUGBqSL5vDgX2mt1g/exec";
+    const adminWhatsApp = "6281318885250";
+
+    // Set tanggal minimal ke hari ini
+    tanggalInput.min = new Date().toISOString().split('T')[0];
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      statusPesan.innerHTML = `<div style="color: blue;">Mengirim reservasi...</div>`;
+
+      const formData = new FormData(form);
+      const data = {
+        nama: formData.get("nama"),
+        tanggal: formData.get("tanggal"),
+        email: formData.get("email"),
+        telepon: formData.get("telepon"),
+        jumlah: formData.get("jumlah"),
+      };
+
+      if (!data.nama || !data.tanggal || !data.email || !data.telepon || !data.jumlah) {
+        statusPesan.innerHTML = `<div style="color: red;">Harap lengkapi semua field.</div>`;
+        submitBtn.disabled = false;
+        return;
+      }
+
+      try {
+        const response = await fetch(appsScriptUrl, {
+          method: "POST",
+          mode: 'no-cors',
+          headers: { 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          redirect: 'follow',
+          body: JSON.stringify(data),
+        });
+
+        if (response.type === 'opaque') {
+          const whatsappLink = `https://wa.me/${adminWhatsApp}?text=Reservasi%20Kafe%20Baru:%0A%0A` +
+            `Nama%20Pelanggan:%20${data.nama}%0A` +
+            `Tanggal:%20${data.tanggal}%0A` +
+            `Jumlah%20Orang:%20${data.jumlah}%0A` +
+            `Nomor%20HP:%20${data.telepon}%0A` +
+            `Email:%20${data.email}`;
+          statusPesan.innerHTML = `
+            <div style="color: green;">
+              <strong>✅ Reservasi Terkirim!</strong><br />
+              Mohon tunggu konfirmasi dari admin melalui WhatsApp/Email.<br />
+              <a href="${whatsappLink}" target="_blank" style="color: green; text-decoration: underline;">
+                Klik di sini untuk menghubungi admin via WhatsApp
+              </a>
+            </div>`;
+          form.reset();
+          submitBtn.disabled = true;
+          window.open(whatsappLink, "_blank");
+          return;
+        }
+
+        throw new Error("Gagal menyimpan reservasi");
+
+      } catch (err) {
+        statusPesan.innerHTML = `
+          <div style="color: red;">
+            <strong>❌ Gagal Mengirim Reservasi</strong><br />
+            ${err.message}<br />
+            Silakan coba beberapa saat lagi atau hubungi admin.<br />
+            <a href="https://wa.me/${adminWhatsApp}" target="_blank" style="color: white; text-decoration: underline;">
+              Klik di sini untuk WhatsApp
+            </a>
+          </div>`;
+        submitBtn.disabled = false;
+      }
+    });
+
+    // Fungsi untuk kembali ke halaman utama
+    document.getElementById("backToHome").addEventListener("click", function () {
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
